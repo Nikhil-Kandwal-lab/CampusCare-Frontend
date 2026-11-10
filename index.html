@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="College Grievance Assistant - Submit and route student complaints easily.">
+    <title>CampusCare | College Grievance Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page-bg"></div>
+
+    <header class="navbar">
+        <div class="brand">
+            <div class="brand-icon">C</div>
+            <div>
+                <h1>CampusCare</h1>
+                <span>College Grievance Assistant</span>
+            </div>
+        </div>
+
+        <div class="nav-status">
+            <span class="status-dot"></span>
+            Assistant Online
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="hero">
+            <div class="hero-badge">🎓 Student Support Portal</div>
+            <h2>Tell us your problem.<br><span>We'll route it to the right department.</span></h2>
+            <p>
+                Submit your college-related issue through the assistant.
+                Your complaint will be categorized and forwarded to the appropriate department.
+            </p>
+        </section>
+
+        <section class="portal-card">
+            <div class="card-header">
+                <div>
+                    <h3>Submit a Grievance</h3>
+                    <p>Enter your details and describe your problem clearly.</p>
+                </div>
+                <div class="step-indicator">
+                    <span class="active-step">1</span>
+                    <span class="step-line"></span>
+                    <span>2</span>
+                    <span class="step-line"></span>
+                    <span>3</span>
+                </div>
+            </div>
+
+            <form id="grievanceForm" novalidate>
+                <div class="form-section">
+                    <div class="section-title">
+                        <span class="section-number">01</span>
+                        <div>
+                            <h4>Student Details</h4>
+                            <p>Basic information for identification</p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="studentName">Full Name <span>*</span></label>
+                            <input
+                                type="text"
+                                id="studentName"
+                                name="studentName"
+                                placeholder="Enter your full name"
+                                maxlength="80"
+                                autocomplete="name"
+                                required
+                            >
+                            <small class="error-message" id="studentNameError"></small>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="rollNumber">Roll / Registration No. <span>*</span></label>
+                            <input
+                                type="text"
+                                id="rollNumber"
+                                name="rollNumber"
+                                placeholder="e.g. CSE2026001"
+                                maxlength="30"
+                                autocomplete="off"
+                                required
+                            >
+                            <small class="error-message" id="rollNumberError"></small>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="email">Student Email <span>*</span></label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="you@example.com"
+                                maxlength="120"
+                                autocomplete="email"
+                                required
+                            >
+                            <small class="error-message" id="emailError"></small>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="phone">Phone Number <span>*</span></label>
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="10-digit mobile number"
+                                maxlength="10"
+                                inputmode="numeric"
+                                autocomplete="tel"
+                                required
+                            >
+                            <small class="error-message" id="phoneError"></small>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="course">Course / Branch <span>*</span></label>
+                            <select id="course" name="course" required>
+                                <option value="">Select branch</option>
+                                <option value="CSE">Computer Science & Engineering</option>
+                                <option value="IT">Information Technology</option>
+                                <option value="ECE">Electronics & Communication</option>
+                                <option value="ME">Mechanical Engineering</option>
+                                <option value="CE">Civil Engineering</option>
+                                <option value="EE">Electrical Engineering</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <small class="error-message" id="courseError"></small>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="year">Year <span>*</span></label>
+                            <select id="year" name="year" required>
+                                <option value="">Select year</option>
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                                <option value="3rd Year">3rd Year</option>
+                                <option value="4th Year">4th Year</option>
+                            </select>
+                            <small class="error-message" id="yearError"></small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="form-section">
+                    <div class="section-title">
+                        <span class="section-number">02</span>
+                        <div>
+                            <h4>Your Problem</h4>
+                            <p>Describe your issue in your own words</p>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="problem">Describe your problem <span>*</span></label>
+                        <textarea
+                            id="problem"
+                            name="problem"
+                            rows="6"
+                            maxlength="1000"
+                            placeholder="Example: The lights in the college sports ground have not been working for the last few days..."
+                            required
+                        ></textarea>
+
+                        <div class="textarea-footer">
+                            <small class="error-message" id="problemError"></small>
+                            <span id="charCount">0 / 1000</span>
+                        </div>
+                    </div>
+
+                    <div class="quick-categories">
+                        <span>Common categories:</span>
+                        <button type="button" class="category-chip" data-text="I have an academic-related issue. ">Academic</button>
+                        <button type="button" class="category-chip" data-text="I have a sports-related issue. ">Sports</button>
+                        <button type="button" class="category-chip" data-text="I have a hostel-related issue. ">Hostel</button>
+                        <button type="button" class="category-chip" data-text="I have a library-related issue. ">Library</button>
+                        <button type="button" class="category-chip" data-text="I have a transport-related issue. ">Transport</button>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-icon">💡</div>
+                    <div>
+                        <strong>How it works</strong>
+                        <p>
+                            Your problem will be analyzed by the grievance assistant,
+                            assigned to the relevant department, and forwarded to the responsible HOD.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="reset" class="secondary-button" id="resetButton">Clear</button>
+                    <button type="submit" class="primary-button" id="submitButton">
+                        <span>Submit Grievance</span>
+                        <span class="arrow">→</span>
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section class="process-section">
+            <div class="process-title">
+                <span>Simple. Fast. Automated.</span>
+                <h3>What happens after you submit?</h3>
+            </div>
+
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="process-icon">📝</div>
+                    <span>01</span>
+                    <h4>Submit</h4>
+                    <p>Student describes the problem through the portal.</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-icon">🤖</div>
+                    <span>02</span>
+                    <h4>Analyze</h4>
+                    <p>Assistant identifies the most relevant department.</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-icon">📧</div>
+                    <span>03</span>
+                    <h4>Forward</h4>
+                    <p>Complaint is sent to the responsible HOD.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>CampusCare • Student Grievance Assistant</p>
+        <span>Hackathon Prototype</span>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">
+        <div class="toast-icon">✓</div>
+        <div>
+            <strong id="toastTitle">Success</strong>
+            <p id="toastMessage">Your grievance has been submitted.</p>
+        </div>
+        <button type="button" id="closeToast" aria-label="Close notification">×</button>
+    </div>
+
+    <div class="modal-overlay" id="demoModal" aria-hidden="true">
+        <div class="modal">
+            <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+            <div class="modal-icon">🤖</div>
+            <p class="modal-label">AI CLASSIFICATION</p>
+            <h3>Grievance captured successfully</h3>
+            <p class="modal-text">
+                Your complaint has been analyzed by the AI assistant
+                and assigned to the appropriate department.
+            </p>
+
+            <div class="demo-details">
+                <div>
+                    <span>Complaint ID</span>
+                    <strong id="demoComplaintId">—</strong>
+                </div>
+                <div>
+                    <span>Student</span>
+                    <strong id="demoStudent">—</strong>
+                </div>
+                <div>
+                    <span>Category</span>
+                    <strong id="demoCategory">Pending AI classification</strong>
+                </div>
+                <div>
+                    <span>Status</span>
+                    <strong class="status-pending" id="demoStatus">
+                        Forwarded to HOD
+                    </strong>
+                </div>
+            </div>
+
+            <button class="primary-button modal-button" id="modalDone">Got it</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
